@@ -24,6 +24,7 @@
       </div>
       <div id="messages"></div>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
       $(() => {
         $("#send").click(()=>{
@@ -49,6 +50,9 @@
       function sendMessage(message){
         $.post("http://localhost:3000/messages", message)
       }
+      var socket = io();
+
+      socket.on("message", addMessages)
     </script>
   </body>
 </html>
